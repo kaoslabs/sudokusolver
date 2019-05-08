@@ -1,13 +1,16 @@
 import {defineBox} from './defineBox';
 import {removeValues} from './removeValues';
 
-
+// remove values from cells in grid
+// calls all other propogate functions
 function propogateGrid(row, col, values, grid){
     grid = propogateRow(row, values, grid);
     grid = propogateCol(col, values, grid);
     grid = propogateBox(row, col, values, grid);
+    return grid;
 }
 
+// remove values from cells in row
 function propogateRow(row, values, grid){
     var cell;
     // iterate cells across row
@@ -21,6 +24,7 @@ function propogateRow(row, values, grid){
     return grid;
 }
 
+// remove values from cells in column
 function propogateCol(col, values, grid){
     var cell;
     // iterate cells down column
@@ -34,6 +38,7 @@ function propogateCol(col, values, grid){
     return grid;
 }
 
+// remove values from cells in box
 function propogateBox(row, col, values, grid){
     var cell;
     row = defineBox(row);
