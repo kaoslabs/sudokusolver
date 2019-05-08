@@ -18,7 +18,7 @@ function propogateRow(row, values, grid){
         cell = grid[row][c];
         // only remove values from cell IF cell is still an array
         if (cell[0]){
-            grid[row][c] = removeValues(cell, values);
+            grid[row][c] = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -32,7 +32,7 @@ function propogateCol(col, values, grid){
         cell = grid[r][col];
         // only remove values from cell IF cell is still an array
         if (cell[0]){
-            grid[r][col] = removeValues(cell, values);
+            grid[r][col] = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -49,7 +49,7 @@ function propogateBox(row, col, values, grid){
             cell = grid[r][c];
             // only remove values from cell IF cell is still an array
             if (cell[0]){
-                grid[r][c] = removeValues(cell, values);
+                grid[r][c] = removeValues(cell, values, grid);
             }
         }
     }
