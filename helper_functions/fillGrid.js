@@ -9,5 +9,5 @@ function fillGrid(grid){
             }
         }
     }
-    // return grid;
+    return grid;
 }
