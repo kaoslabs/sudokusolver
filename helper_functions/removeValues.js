@@ -1,5 +1,7 @@
+import {setCell} from './setCell';
+
 // removes values from cell
-function removeValues(cell, values){
+function removeValues(cell, values, grid){
 
     // checks if values is a single int and converts to an array
     if (!values.length){
@@ -20,6 +22,9 @@ function removeValues(cell, values){
                 cell.splice(i,1);
             }
         }
+    }
+    if (!cell[0]){
+        setCell(cell, cell[0], grid);
     }
     return cell;
 }
