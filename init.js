@@ -1,5 +1,5 @@
 // import functions
-let fillGrid = include('./helper_functions');
+import {fillGrid} from './helper_functions/fillGrid';
 
 // init function
 function init(){
