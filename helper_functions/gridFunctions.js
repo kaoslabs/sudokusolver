@@ -1,10 +1,4 @@
-// Cell object constructor function
-function Cell(row, col){
-    this.row = row;
-    this.col = col;
-    values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    solved = false;
-}
+import {Cell} from './cellFunctions';
 
 // fill 9x9 grid with array [1-9] 
 function fillBlankGrid(grid){

@@ -1,5 +1,13 @@
 import {propogateGrid} from './gridFunctions';
 
+// Cell object constructor function
+function Cell(row, col){
+    this.row = row;
+    this.col = col;
+    values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    solved = false;
+}
+
 function setCell(cell, value, grid){
     cell.values = value;
     // end function if value is array
