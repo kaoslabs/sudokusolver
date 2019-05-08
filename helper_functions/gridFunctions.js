@@ -1,8 +1,9 @@
+// Cell object constructor function
 function Cell(row, col){
     this.row = row;
     this.col = col;
-    var values = [];
-    var solved = false;
+    values = [];
+    solved = false;
 }
 
 // fill 9x9 grid with array [1-9] 
