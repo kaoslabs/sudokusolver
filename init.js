@@ -1,8 +1,8 @@
 // import functions
-import {fillGrid} from './helper_functions/fillGrid';
+import {fillBlankGrid} from './helper_functions/gridFunctions';
 
 // init function
 function init(){
-    fillGrid(grid);
+    fillBlankGrid(grid);
 }
 
