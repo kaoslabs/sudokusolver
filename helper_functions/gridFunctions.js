@@ -18,7 +18,7 @@ function fillBlankGrid(grid){
 }
 
 // import app to grid
-function importGrid(grid){
+function importGrid(app_grid, grid){
     // TODO: import values from app into grid!
     return grid;
 }
