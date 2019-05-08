@@ -2,7 +2,7 @@
 function Cell(row, col){
     this.row = row;
     this.col = col;
-    values = [];
+    values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     solved = false;
 }
 
@@ -12,9 +12,6 @@ function fillBlankGrid(grid){
         grid.cells[r] = [];
         for (c = 0; c < 9; c++){
             grid.cells[r][c] = new Cell(r, c);
-            for (i = 0; i < 9; i++){
-                grid.cells[r][c].values[i] = i + 1;
-            }
         }
     }
     return grid;
