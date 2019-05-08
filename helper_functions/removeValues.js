@@ -1,4 +1,4 @@
-import {setCell} from './setCell';
+import {setCell} from './cellFunctions';
 
 // removes values from cell
 function removeValues(cell, values, grid){
@@ -12,19 +12,19 @@ function removeValues(cell, values, grid){
 
     // iterates cell array
     // won't run if cell is not an array
-    for (i = 0; i < cell.length; i++){
+    for (i = 0; i < cell.values.length; i++){
         // iterates given values
         for (j = 0; j < values.length; j++){
             // checks if value matches cell
             // TODO: optimize this to break loop when values[j] < cell[i] to reduce iterations
             if (cell[i] == values[j]){
                 // remove value from cell
-                cell.splice(i,1);
+                cell.values.splice(i,1);
             }
         }
     }
-    if (!cell[0]){
-        setCell(cell, cell[0], grid);
+    if (!cell.solved){
+        setCell(cell, cell.values[0], grid);
     }
     return cell;
 }

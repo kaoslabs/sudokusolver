@@ -15,10 +15,10 @@ function propogateRow(row, values, grid){
     var cell;
     // iterate cells across row
     for (c = 0; c < 9; c++){
-        cell = grid[row][c];
+        cell = grid.cells[row][c];
         // only remove values from cell IF cell is still an array
-        if (cell[0]){
-            grid[row][c] = removeValues(cell, values, grid);
+        if (!cell.solved){
+            grid.cells[row][c].values = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -29,10 +29,10 @@ function propogateCol(col, values, grid){
     var cell;
     // iterate cells down column
     for (r = 0; r < 9; r++){
-        cell = grid[r][col];
+        cell = grid.cells[r][col];
         // only remove values from cell IF cell is still an array
-        if (cell[0]){
-            grid[r][col] = removeValues(cell, values, grid);
+        if (!cell.solved){
+            grid.cells[r][col].values = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -46,10 +46,10 @@ function propogateBox(row, col, values, grid){
     // iterate cells in box
     for (r = row; r < row + 3; r++){
         for (c = col; c < col + 3; c++){
-            cell = grid[r][c];
+            cell = grid.cells[r][c];
             // only remove values from cell IF cell is still an array
-            if (cell[0]){
-                grid[r][c] = removeValues(cell, values, grid);
+            if (!cell.solved){
+                grid.cells[r][c].values = removeValues(cell, values, grid);
             }
         }
     }
