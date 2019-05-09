@@ -1,5 +1,5 @@
 // import functions
-import {fillBlankGrid} from './helper_functions/gridFunctions';
+import {fillBlankGrid} from './gridFunctions';
 
 // declare grid object
 var grid = {
@@ -15,3 +15,6 @@ function init(){
     // TODO: begin iterating cells and propogating completed cells
 }
 
+function run(){
+    // TODO: start the program!
+}

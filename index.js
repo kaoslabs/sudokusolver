@@ -1,2 +1,2 @@
 // import functions
-let run = require('run');
+import {init, run} from './helper_functions/appFunctions';
