@@ -1,5 +1,5 @@
 import {defineBox} from './gridFunctions';
-import {removeValues} from './removeValues';
+import {removeValues} from './cellFunctions';
 
 // remove values from cells in grid
 // calls all other propogate functions

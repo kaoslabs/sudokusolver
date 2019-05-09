@@ -1,19 +1,12 @@
 // import functions
-import {fillBlankGrid, importGrid, exportGrid} from './gridFunctions';
+import {Grid, fillBlankGrid, importGrid, exportGrid} from './gridFunctions';
 import {setCell} from './cellFunctions';
-
-// declare grid object
-var grid = {
-    cells: [],
-    solved: 0
-};
 
 // init function
 function init(){
+    grid = new Grid();
     grid = fillBlankGrid(grid);
-    // TODO: define app_grid from app
     grid = importGrid(app, grid);
-    // TODO: begin iterating cells and propogating completed cells
 }
 
 // run the app
@@ -24,7 +17,7 @@ function run(grid){
     // setCell will begin propogation
     for (r = 0; r < 9; r++){
         for (c = 0; c < 9; c++){
-            cell = grid[r][c];
+            cell = grid.cells[r][c];
             if (cell.values.length == 1){
                 setCell(cell, values, grid);
             }
