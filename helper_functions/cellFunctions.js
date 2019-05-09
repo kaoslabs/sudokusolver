@@ -10,8 +10,8 @@ function Cell(row, col){
 
 function setCell(cell, values, grid){
     cell.values = values;
-    // end function if value is array
-    if (value[0]){
+    // end function if values is > 1
+    if (values.length > 1){
         return cell;
     }
     // else complete cell and proceed with solving grid
@@ -36,7 +36,7 @@ function removeValues(cell, values, grid){
     }
 
     // iterates cell array
-    // won't run if cell is not an array
+    // won't run if cell.values is not an array
     for (i = 0; i < cell.values.length; i++){
         // iterates given values
         for (j = 0; j < values.length; j++){
@@ -48,8 +48,6 @@ function removeValues(cell, values, grid){
             }
         }
     }
-    if (!cell.solved){
-        setCell(cell, cell.values[0], grid);
-    }
+    cell = setCell(cell, cell.values[0], grid);
     return cell;
 }
