@@ -4,12 +4,20 @@ import {propogateGrid} from './gridFunctions';
 function Cell(row, col){
     this.row = row;
     this.col = col;
-    values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    solved = false;
+    this.values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.solved = false;
 }
 
 function setCell(cell, values, grid){
+
+    // checks if values is a single int and converts to an array
+    if (!values.length){
+        temp_value = values;
+        values = [];
+        values[0] = temp_value;
+    }
     cell.values = values;
+
     // end function if values is > 1
     if (values.length > 1){
         return cell;
@@ -27,6 +35,10 @@ function setCell(cell, values, grid){
 
 // removes values from cell
 function removeValues(cell, values, grid){
+    // exits early if cell is already solved or if cell.values has only 1 item
+    if (cell.solved || cell.values.length == 1){
+        return cell;
+    }
 
     // checks if values is a single int and converts to an array
     if (!values.length){
@@ -36,7 +48,6 @@ function removeValues(cell, values, grid){
     }
 
     // iterates cell array
-    // won't run if cell.values is not an array
     for (i = 0; i < cell.values.length; i++){
         // iterates given values
         for (j = 0; j < values.length; j++){

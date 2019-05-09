@@ -2,8 +2,8 @@ import {Cell} from './cellFunctions';
 
 // declare Grid object
 function Grid(){
-    cells = [];
-    solved = 0;
+    this.cells = [];
+    this.solved = 0;
 }
 
 // fill 9x9 grid with array [1-9] 
