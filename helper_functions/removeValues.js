@@ -5,7 +5,7 @@ function removeValues(cell, values, grid){
 
     // checks if values is a single int and converts to an array
     if (!values.length){
-        var temp_value = values;
+        temp_value = values;
         values = [];
         values[0] = temp_value;
     }

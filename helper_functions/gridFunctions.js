@@ -12,14 +12,21 @@ function fillBlankGrid(grid){
 }
 
 // import app to grid
-function importGrid(app_grid, grid){
+function importGrid(app, grid){
     // TODO: import values from app into grid!
     return grid;
 }
 
 // export grid to app
-function exportGrid(grid){
+function exportGrid(app, grid){
     // TODO: write code!
+    new_grid = [];
+    for (r = 0; r < 9; r++){
+        for (c = 0; c < 9; c++){
+            grid_pos = r * 9 + c;
+            new_grid[grid_pos] = grid[r][c].value;
+        }
+    }
 }
 
 // defines the start value of grid row or column
