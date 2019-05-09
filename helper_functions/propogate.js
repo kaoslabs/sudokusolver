@@ -1,4 +1,4 @@
-import {defineBox} from './defineBox';
+import {defineBox} from './gridFunctions';
 import {removeValues} from './removeValues';
 
 // remove values from cells in grid

@@ -21,3 +21,8 @@ function importGrid(app_grid, grid){
 function exportGrid(grid){
     // TODO: write code!
 }
+
+// defines the start value of grid row or column
+function defineBox(num){
+    return (num - num % 3);
+}
