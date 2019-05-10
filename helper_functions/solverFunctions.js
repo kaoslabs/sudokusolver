@@ -82,6 +82,7 @@ function findSolosRow(row, grid){
             grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
         }
     }
+    return grid;
 }
 
 // check for solo values in columns
@@ -103,6 +104,7 @@ function findSolosCol(col, grid){
             grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
         }
     }
+    return grid;
 }
 
 // check for solo values in boxes
@@ -131,4 +133,5 @@ function findSolosBox(row, col, grid){
             grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
         }
     }
+    return grid;
 }
