@@ -19,9 +19,11 @@ function setCell(cell, values, grid){
     cell.values = values;
 
     // end function if values is > 1
-    if (values.length > 1){
+    // AND cell is not solved (accommodates if cell solved from solos method)
+    if (values.length > 1 && !cell.solved){
         return cell;
     }
+
     // else complete cell and proceed with solving grid
     cell.solved = true;
     grid.solved++;
