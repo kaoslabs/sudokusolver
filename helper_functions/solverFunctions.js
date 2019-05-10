@@ -47,11 +47,38 @@ function propogateBox(row, col, values, grid){
     for (r = row; r < row + 3; r++){
         for (c = col; c < col + 3; c++){
             cell = grid.cells[r][c];
-            // only remove values from cell IF cell is still an array
+            // only remove values from cell IF cell is not solved
             if (!cell.solved){
                 grid.cells[r][c].values = removeValues(cell, values, grid);
             }
         }
     }
     return grid;
+}
+
+// check for solo values
+function findSolosGrid(grid){
+    grid = findSolosRow(grid);
+    grid = findSolosCol(grid);
+    grid = findSolosBox(grid);
+}
+
+// check for solo values in rows
+function findSolosRow(row, grid){
+    for (c = 0; c < 9; c++){
+        count = 0;
+        for (i = 1; i <= 9; i++){
+            
+        }
+    }
+}
+
+// check for solo values in columns
+function findSolosCol(col, grid){
+    
+}
+
+// check for solo values in boxes
+function findSolosBox(row, col, grid){
+    
 }

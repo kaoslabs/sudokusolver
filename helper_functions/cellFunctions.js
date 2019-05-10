@@ -1,4 +1,4 @@
-import {propogateGrid} from './gridFunctions';
+import {propogateGrid} from './solverFunctions';
 
 // Cell object constructor function
 function Cell(row, col){
@@ -23,6 +23,7 @@ function setCell(cell, values, grid){
         return cell;
     }
     // else complete cell and proceed with solving grid
+    cell.solved = true;
     grid.solved++;
     if (grid.solved < 81){
         propogateGrid(cell.row, cell.col, values, grid);
@@ -31,6 +32,15 @@ function setCell(cell, values, grid){
         // TODO: BREAK ALL ITERATIONS, sudoku is solved :D
     }
     return cell;
+}
+
+// checks cell for value
+function checkValue(cell, value){
+    for (i = 0; i < cell.values.length; i++){
+        if (cell.values[i] == value) return true;
+        if (cell.values[i] > value) break;
+    }
+    return false;
 }
 
 // removes values from cell
