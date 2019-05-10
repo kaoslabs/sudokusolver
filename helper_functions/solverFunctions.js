@@ -107,5 +107,28 @@ function findSolosCol(col, grid){
 
 // check for solo values in boxes
 function findSolosBox(row, col, grid){
+    row_box = defineBox(row);
+    col_box = defineBox(col);
+    for (i = 1; i <= 9; i++){
+        count = 0;
+        row = 0;
+        col = 0;
+        for (r = row_box; r < row_box + 2; r++){
+            for (c = col_box; c < col_box + 2; c++){
+                if (checkValue(grid.cells[r][c], i)){
+                    count++;
+                    row = r;
+                    col = c;
+                }
+                if (count > 1) break;
+            }
+        }
 
+        // if there is only one of value i in row, set cell to i
+        // note: setCell will then propogate
+        if (count == 1){
+            grid.cells[row][col].solved = true;
+            grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
+        }
+    }
 }
