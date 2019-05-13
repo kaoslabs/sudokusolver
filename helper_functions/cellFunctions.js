@@ -1,4 +1,5 @@
 import {propogateGrid} from './solverFunctions';
+import {finish} from './appFunctions';
 
 // Cell object constructor function
 function Cell(row, col){
@@ -32,6 +33,7 @@ function setCell(cell, values, grid){
     }
     else {
         // TODO: BREAK ALL ITERATIONS, sudoku is solved :D
+        finish(grid);
     }
     return cell;
 }
