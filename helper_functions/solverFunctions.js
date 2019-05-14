@@ -1,6 +1,20 @@
 import {defineBox} from './gridFunctions';
 import {removeValues, checkValue, setCell} from './cellFunctions';
 
+// begin by iterating through grid for imported cells
+function initializeCells(grid){
+    // setCell will begin propogation
+    for (r = 0; r < 9; r++){
+        for (c = 0; c < 9; c++){
+            cell = grid.cells[r][c];
+            if (cell.values.length == 1){
+                grid = setCell(cell, values, grid);
+            }
+        }
+    }
+    return grid;
+}
+
 // remove values from cells in grid
 // calls all other propogate functions
 function propogateGrid(row, col, values, grid){
