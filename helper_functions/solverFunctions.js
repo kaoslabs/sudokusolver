@@ -18,7 +18,7 @@ function propogateRow(row, values, grid){
         cell = grid.cells[row][c];
         // only remove values from cell IF cell is still an array
         if (!cell.solved){
-            grid.cells[row][c].values = removeValues(cell, values, grid);
+            grid = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -32,7 +32,7 @@ function propogateCol(col, values, grid){
         cell = grid.cells[r][col];
         // only remove values from cell IF cell is still an array
         if (!cell.solved){
-            grid.cells[r][col].values = removeValues(cell, values, grid);
+            grid = removeValues(cell, values, grid);
         }
     }
     return grid;
@@ -49,7 +49,7 @@ function propogateBox(row, col, values, grid){
             cell = grid.cells[r][c];
             // only remove values from cell IF cell is not solved
             if (!cell.solved){
-                grid.cells[r][c].values = removeValues(cell, values, grid);
+                grid = removeValues(cell, values, grid);
             }
         }
     }
@@ -61,6 +61,7 @@ function findSolosGrid(grid){
     grid = findSolosRow(grid);
     grid = findSolosCol(grid);
     grid = findSolosBox(grid);
+    return grid;
 }
 
 // check for solo values in rows
@@ -78,8 +79,7 @@ function findSolosRow(row, grid){
         // if there is only one of value i in row, set cell to i
         // note: setCell will then propogate
         if (count == 1){
-            grid.cells[row][col].solved = true;
-            grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
+            grid = setCell(grid.cells[row][col], i, grid);
         }
     }
     return grid;
@@ -100,8 +100,7 @@ function findSolosCol(col, grid){
         // if there is only one of value i in col, set cell to i
         // note: setCell will then propogate
         if (count == 1){
-            grid.cells[row][col].solved = true;
-            grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
+            grid = setCell(grid.cells[row][col], i, grid);
         }
     }
     return grid;
@@ -129,8 +128,7 @@ function findSolosBox(row, col, grid){
         // if there is only one of value i in row, set cell to i
         // note: setCell will then propogate
         if (count == 1){
-            grid.cells[row][col].solved = true;
-            grid.cells[row][col] = setCell(grid.cells[row][col], i, grid);
+            grid = setCell(grid.cells[row][col], i, grid);
         }
     }
     return grid;

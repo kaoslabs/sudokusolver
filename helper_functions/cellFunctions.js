@@ -19,10 +19,9 @@ function setCell(cell, values, grid){
     }
     cell.values = values;
 
-    // end function if values is > 1
-    // AND cell is not solved (accommodates if cell solved from solos method)
-    if (values.length > 1 && !cell.solved){
-        return cell;
+    // end function if values is > 1 because cell is not solved
+    if (values.length > 1){
+        return grid;
     }
 
     // else complete cell and proceed with solving grid
@@ -35,7 +34,7 @@ function setCell(cell, values, grid){
         // TODO: BREAK ALL ITERATIONS, sudoku is solved :D
         finish(grid);
     }
-    return cell;
+    return grid;
 }
 
 // checks cell for value
@@ -51,7 +50,7 @@ function checkValue(cell, value){
 function removeValues(cell, values, grid){
     // exits early if cell is already solved or if cell.values has only 1 item
     if (cell.solved || cell.values.length == 1){
-        return cell;
+        return grid;
     }
 
     // checks if values is a single int and converts to an array
@@ -73,6 +72,6 @@ function removeValues(cell, values, grid){
             }
         }
     }
-    cell = setCell(cell, cell.values[0], grid);
-    return cell;
+    grid = setCell(cell, cell.values[0], grid);
+    return grid;
 }
