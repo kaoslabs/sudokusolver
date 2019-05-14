@@ -2,6 +2,7 @@ import {defineBox} from './gridFunctions';
 import {removeValues, checkValue, setCell} from './cellFunctions';
 
 // begin by iterating through grid for imported cells
+// returns grid
 function initializeCells(grid){
     // setCell will begin propogation
     for (r = 0; r < 9; r++){
@@ -17,6 +18,7 @@ function initializeCells(grid){
 
 // remove values from cells in grid
 // calls all other propogate functions
+// returns grid
 function propogateGrid(row, col, values, grid){
     grid = propogateRow(row, values, grid);
     grid = propogateCol(col, values, grid);
@@ -25,6 +27,7 @@ function propogateGrid(row, col, values, grid){
 }
 
 // remove values from cells in row
+// returns grid
 function propogateRow(row, values, grid){
     var cell;
     // iterate cells across row
@@ -39,6 +42,7 @@ function propogateRow(row, values, grid){
 }
 
 // remove values from cells in column
+// returns grid
 function propogateCol(col, values, grid){
     var cell;
     // iterate cells down column
@@ -53,6 +57,7 @@ function propogateCol(col, values, grid){
 }
 
 // remove values from cells in box
+// returns grid
 function propogateBox(row, col, values, grid){
     var cell;
     row = defineBox(row);
@@ -71,6 +76,7 @@ function propogateBox(row, col, values, grid){
 }
 
 // check for solo values
+// returns grid
 function findSolosGrid(grid){
     grid = findSolosRow(grid);
     grid = findSolosCol(grid);
@@ -79,6 +85,7 @@ function findSolosGrid(grid){
 }
 
 // check for solo values in rows
+// returns grid
 function findSolosRow(row, grid){
     for (i = 1; i <= 9; i++){
         count = 0;
@@ -100,6 +107,7 @@ function findSolosRow(row, grid){
 }
 
 // check for solo values in columns
+// returns grid
 function findSolosCol(col, grid){
     for (i = 1; i   <= 9; i++){
         count = 0;
@@ -121,6 +129,7 @@ function findSolosCol(col, grid){
 }
 
 // check for solo values in boxes
+// returns grid
 function findSolosBox(row, col, grid){
     row_box = defineBox(row);
     col_box = defineBox(col);

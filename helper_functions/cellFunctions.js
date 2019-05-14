@@ -9,6 +9,8 @@ function Cell(row, col){
     this.solved = false;
 }
 
+// sets cell to given value(s)
+// returns grid
 function setCell(cell, values, grid){
 
     // checks if values is a single int and converts to an array
@@ -38,6 +40,7 @@ function setCell(cell, values, grid){
 }
 
 // checks cell for value
+// returns boolean
 function checkValue(cell, value){
     for (i = 0; i < cell.values.length; i++){
         if (cell.values[i] == value) return true;
@@ -47,6 +50,7 @@ function checkValue(cell, value){
 }
 
 // removes values from cell
+// returns grid
 function removeValues(cell, values, grid){
     // exits early if cell is already solved or if cell.values has only 1 item
     if (cell.solved || cell.values.length == 1){

@@ -6,7 +6,8 @@ function Grid(){
     this.solved = 0;
 }
 
-// fill 9x9 grid with array [1-9] 
+// fill 9x9 grid with array [1-9]
+// returns grid
 function fillBlankGrid(grid){
     for (r = 0; r < 9; r++){
         grid.cells[r] = [];
@@ -18,6 +19,7 @@ function fillBlankGrid(grid){
 }
 
 // import app to grid
+// returns grid
 function importGrid(app, grid){
     // TODO: import values from app into grid!
     return grid;
@@ -38,6 +40,7 @@ function exportGrid(app, grid){
 }
 
 // defines the start value of grid row or column
+// returns int value
 function defineBox(num){
     return (num - num % 3);
 }
