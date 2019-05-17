@@ -4,39 +4,40 @@ import {Cell} from './cellFunctions';
 function Grid(){
     this.cells = [];
     this.solved = 0;
-}
 
-// fill 9x9 grid with array [1-9]
-// returns grid
-function fillBlankGrid(grid){
-    for (r = 0; r < 9; r++){
-        grid.cells[r] = [];
-        for (c = 0; c < 9; c++){
-            grid.cells[r][c] = new Cell(r, c);
+    // fill 9x9 grid with array [1-9]
+    // returns grid
+    function fillBlankGrid(){
+        for (r = 0; r < 9; r++){
+            this.cells[r] = [];
+            for (c = 0; c < 9; c++){
+                this.cells[r][c] = new Cell(r, c);
+            }
         }
     }
-    return grid;
-}
 
-// import app to grid
-// returns grid
-function importGrid(app, grid){
-    // TODO: import values from app into grid!
-    return grid;
-}
-
-// export grid to app
-function exportGrid(app, grid){
-    // TODO: write code!
-
-    // this version will export grid as a 81 length array
-    new_grid = [];
-    for (r = 0; r < 9; r++){
-        for (c = 0; c < 9; c++){
-            grid_pos = r * 9 + c;
-            new_grid[grid_pos] = grid[r][c].values;
-        }
+    // import app to grid
+    // returns grid
+    function importGrid(app){
+        // TODO: import values from app into grid!
     }
+
+    // export grid to app
+    function exportGrid(app){
+        // TODO: write code!
+
+        // this version will export grid as a 81 length array
+        grid_arr = [];
+        for (r = 0; r < 9; r++){
+            for (c = 0; c < 9; c++){
+                grid_pos = r * 9 + c;
+                grid_arr[grid_pos] = this.cells[r][c].values;
+            }
+        }
+
+        // TODO: make this work! app.export(grid_arr)
+    }
+
 }
 
 // defines the start value of grid row or column
