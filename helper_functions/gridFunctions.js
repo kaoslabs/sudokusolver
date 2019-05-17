@@ -41,6 +41,4 @@ function exportGrid(app, grid){
 
 // defines the start value of grid row or column
 // returns int value
-function defineBox(num){
-    return (num - num % 3);
-}
+var defineBox = num => (num - num % 3);
