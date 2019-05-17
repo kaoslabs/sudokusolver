@@ -9,7 +9,7 @@ function initializeCells(grid){
         for (c = 0; c < 9; c++){
             cell = grid.cells[r][c];
             if (cell.values.length == 1){
-                grid = setCell(cell, values, grid);
+                grid.setCell(cell, values);
             }
         }
     }

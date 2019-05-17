@@ -1,5 +1,5 @@
 // import functions
-import {Grid, fillBlankGrid, importGrid, exportGrid} from './gridFunctions';
+import {Grid} from './gridFunctions';
 import {initializeCells} from './solverFunctions';
 
 var app;
@@ -7,19 +7,19 @@ var app;
 // init function
 function init(app){
     grid = new Grid();
-    grid = fillBlankGrid(grid);
-    grid = importGrid(app, grid);
+    grid.fillBlankGrid();
+    grid.importGrid(app);
     run(grid);
 }
 
 // run the app
 function run(grid){
-    initializeCells(grid);
+    grid = initializeCells(grid);
 }
 
 // finish the app
 function finish(grid){
     // TODO: break all recursive functions (propogations)
     // TODO: get app variable
-    exportGrid(app, grid);
+    exportGrid(app);
 }

@@ -6,8 +6,7 @@ function Grid(){
     this.solved = 0;
 
     // fill 9x9 grid with array [1-9]
-    // returns grid
-    function fillBlankGrid(){
+    this.fillBlankGrid = function(){
         for (r = 0; r < 9; r++){
             this.cells[r] = [];
             for (c = 0; c < 9; c++){
@@ -17,13 +16,12 @@ function Grid(){
     }
 
     // import app to grid
-    // returns grid
-    function importGrid(app){
+    this.importGrid = function(app){
         // TODO: import values from app into grid!
     }
 
     // export grid to app
-    function exportGrid(app){
+    this.exportGrid = function(app){
         // TODO: write code!
 
         // this version will export grid as a 81 length array
