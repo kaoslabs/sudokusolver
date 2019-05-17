@@ -1,4 +1,3 @@
-import {propogateGrid} from './solverFunctions';
 import {finish} from './appFunctions';
 
 // Cell object constructor function
@@ -32,7 +31,7 @@ function Cell(row, col){
         this.isSolved = true;
         grid.solved++;
         if (grid.solved < 81){
-            propogateGrid(this.row, this.col, this.values);
+            grid.solver.propogateGrid(this.row, this.col, this.values);
         }
         else {
             // TODO: BREAK ALL ITERATIONS, sudoku is solved :D

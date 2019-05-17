@@ -1,6 +1,6 @@
 // import functions
 import {Grid} from './gridFunctions';
-import {initializeCells} from './solverFunctions';
+import {Solver} from './solverFunctions';
 
 var app;
 
@@ -14,7 +14,7 @@ function init(app){
 
 // run the app
 function run(grid){
-    grid = initializeCells(grid);
+    grid.solver.initializeCells();
 }
 
 // finish the app

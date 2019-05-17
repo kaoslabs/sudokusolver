@@ -2,6 +2,7 @@ import {Cell} from './cellFunctions';
 
 // declare Grid object
 function Grid(){
+    this.solver = new Solver();
     this.cells = [];
     this.solved = 0;
 
