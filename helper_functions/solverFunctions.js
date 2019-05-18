@@ -22,7 +22,7 @@ function Solver(){
     }
 
     // remove values from cells in row
-    // xcols parameter will instead set values for given columns
+    // xcols parameter will also set values for given columns
     this.propogateRow = function(row, values, xcols){
         if (!xcols) xcols = [];
         // iterate cells across row
@@ -41,7 +41,7 @@ function Solver(){
     }
 
     // remove values from cells in column
-    // xrows parameter will instead set values for given rows
+    // xrows parameter will also set values for given rows
     this.propogateCol = function(col, values, xrows){
         if (!xrows) xrows = [];
         // iterate cells down column
@@ -60,8 +60,9 @@ function Solver(){
     }
 
     // remove values from cells in box
-    // xcells parameter will instead set values for given rows & columns
-    // xcells must be passed in as an object array [{row: r, col: c}, ...]
+    // xcells parameter will also set values for given rows & columns
+    // xcells must be passed in as an array [0-8] counting left to right, top to bottom
+    // 0 is top left of box, 2 is top right, 6 is bottom left, 8 is bottom right
     this.propogateBox = function(row, col, values, xcells){
         if (!xcells) xcells = [];
         let row_box = defineBox(row);
@@ -70,7 +71,7 @@ function Solver(){
         for (let r = row_box; r < row_box + 3; r++){
             for (let c = col_box; c < col_box + 3; c++){
                 let cell = grid.cells[r][c];
-                if (xcells.includes({row: r, col: c})){
+                if (xcells.includes(convertBoxToNine(r, c))){
                     cell.setCell(values);
                     continue;
                 }
@@ -180,30 +181,31 @@ function Solver(){
 
         // searches row for pairs and propogates
         this.findPairsRow = function(row){
-            // TODO: FIX includes! Needs an index for second cell!!
-            let row_values = grid.getRowValues;
+            // create array of values arrays
+            let row_values = grid.getRowValues(row);
             for (let c = 0; c < 9; c++){
-                let values = grid.cells[row][c].values;
-                if(row_values.includes(values, c + 1)){
-                    let xcols = [c, twofers[j].col];
-                    propogateRow(row, twofers[i].values, xcols);
+                // skip cell if not 2 values in cell
+                if (row_values[c].length != 2) continue;
+                // compare against future cells
+                for (let c_2 = c + 1; c_2 < 9; c_2++){
+                    if (compareArraysEqual(row_values[c], row_values[c_2])){
+                        propogateRow(row, row_values[c], [c, c_2]);
+                    }
                 }
             }
         }
 
+        // searches col for pairs in a row and propogates
         this.findPairsCol = function(col){
-            let twofers = [];
+            // create array of values arrays
+            let col_values = grid.getColValues(col);
             for (let r = 0; r < 9; r++){
-                let values = grid.cells[row][c].values;
-                if (values.length == 2) twofers.push({values: values, row: r});
-            }
-            if (twofers.length >= 2){
-                for (let i = 0; i < twofers.length - 1; i++){
-                    for (let j = i + 1; j < twofers.length; j++){
-                        if (twofers[i].values == twofers[j].values){
-                            let xrows = [twofers[i].row, twofers[j].row];
-                            propogateCol(col, twofers[i].values, xrows);
-                        }
+                // skip cell if not 2 values in cell
+                if (col_values[r].length != 2) continue;
+                // compare against future cells
+                for (let r_2 = r + 1; r_2 < 9; r_2++){
+                    if (compareArraysEqual(col_values[r], col_values[r_2])){
+                        propogateCol(col, col_values[r], [r, r_2]);
                     }
                 }
             }
@@ -211,29 +213,20 @@ function Solver(){
         }
 
         this.findPairsBox = function(row, col){
-            let twofers = [];
             let row_box = defineBox(row);
             let col_box = defineBox(col);
+            let box_values = grid.getBoxValues(row, col);
             for (let r = row_box; r < row_box + 3; r++){
                 for (let c = col_box; c < col_box + 3; c++){
-                    let values = grid.cells[r][c].values;
-                    if (values.length == 2) twofers.push({values: values, row: r, col: c});
-                }
-                if (twofers.length >= 2){
-                    for (let i = 0; i < twofers.length - 1; i++){
-                        for (let j = i + 1; j < twofers.length; j++){
-                            if (twofers[i].values == twofers[j].values){
-                                let xcells = [
-                                                {
-                                                    row: twofers[i].row,
-                                                    col: twofers[i].col
-                                                },
-                                                {
-                                                    row: twofers[j].row,
-                                                    col: twofers[j].col
-                                                }
-                                            ];
-                                propogateBox(row, col, values, xcells);
+                    let pos = convertBoxToNine(r, c);
+                    // skip cell if not 2 values in cell
+                    if (box_values[pos].length != 2) continue;
+                    // compare against future cells
+                    for (let r_2 = r; r_2 < row_box + 3; r++){
+                        for (let c_2 = c + 1; c_2 < c_box + 3; c++){
+                            let pos_2 = convertBoxToNine(r_2, c_2);
+                            if (compareArraysEqual(box_values[pos], box_values[pos_2])){
+                                propogateBox(row, col, box_values[pos], [pos, pos_2]);
                             }
                         }
                     }
@@ -242,3 +235,16 @@ function Solver(){
         }
     }
 }
+
+// specific function for comparing arrays of VALUES ONLY
+// returns boolean
+function compareArraysEqual(arr1, arr2){
+    if (arr1.length != arr2.length) return false;
+    for (i = 0; i < arr1.length; i++){
+        if (arr1[i] != arr2[i]) return false;
+    }
+    return true;
+}
+
+// converts row col to position in box
+var convertBoxToNine = (row, col) => (row % 3 * 3 + col % 3);

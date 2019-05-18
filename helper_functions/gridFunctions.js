@@ -56,6 +56,7 @@ function Grid(){
     }
 
     // returns array of all values in given box
+    // note that the array returned is 1-d and length 9
     this.getBoxValues = function(row, col){
         row_box = defineBox(row);
         col_box = defineBox(col);
