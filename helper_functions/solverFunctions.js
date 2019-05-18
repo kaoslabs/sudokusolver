@@ -195,7 +195,7 @@ function Solver(){
             }
         }
 
-        // searches col for pairs in a row and propogates
+        // searches col for pairs and propogates
         this.findPairsCol = function(col){
             // create array of values arrays
             let col_values = grid.getColValues(col);
@@ -212,9 +212,11 @@ function Solver(){
             
         }
 
+        // searches box for pairs and propogates
         this.findPairsBox = function(row, col){
             let row_box = defineBox(row);
             let col_box = defineBox(col);
+            // create array of values arrays
             let box_values = grid.getBoxValues(row, col);
             for (let r = row_box; r < row_box + 3; r++){
                 for (let c = col_box; c < col_box + 3; c++){
