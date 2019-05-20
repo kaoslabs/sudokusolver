@@ -19,6 +19,18 @@ function Grid(){
     // import app to grid
     this.importGrid = function(app){
         // TODO: import values from app into grid!
+        // if input is a string of 81 ints (0-9), with 0 being unsolved
+        let grid_str = app.grid_str;
+
+        let i = 0;
+        for (let r = 0; r < 9; r ++){
+            for (let c = 0; c < 9; c++){
+                if (grid_str[i] != 0){
+                    this.cells[r][c] = grid_str[i];
+                }
+                i++;
+            }
+        }
     }
 
     // export grid to app
@@ -26,9 +38,9 @@ function Grid(){
         // TODO: write code!
 
         // this version will export grid as a 81 length array
-        grid_arr = [];
-        for (r = 0; r < 9; r++){
-            for (c = 0; c < 9; c++){
+        let grid_arr = [];
+        for (let r = 0; r < 9; r++){
+            for (let c = 0; c < 9; c++){
                 grid_pos = r * 9 + c;
                 grid_arr[grid_pos] = this.cells[r][c].values;
             }
@@ -40,7 +52,7 @@ function Grid(){
     // returns array of all values in given row
     this.getRowValues = function(row){
         let arr = [];
-        for (c = 0; c < 9; c++){
+        for (let c = 0; c < 9; c++){
             arr.push(cells[row][c].values);
         }
         return arr;
@@ -49,7 +61,7 @@ function Grid(){
     // returns array of all values in given column
     this.getColValues = function(col){
         let arr = [];
-        for (r = 0; r < 9; r++){
+        for (let r = 0; r < 9; r++){
             arr.push(cells[r][col].values);
         }
         return arr;
@@ -58,11 +70,11 @@ function Grid(){
     // returns array of all values in given box
     // note that the array returned is 1-d and length 9
     this.getBoxValues = function(row, col){
-        row_box = defineBox(row);
-        col_box = defineBox(col);
+        let row_box = defineBox(row);
+        let col_box = defineBox(col);
         let arr = [];
-        for (r = row_box; r < row_box + 3; r++){
-            for (c = col_box; c < col_box + 3; c++){
+        for (let r = row_box; r < row_box + 3; r++){
+            for (let c = col_box; c < col_box + 3; c++){
                 arr.push(cells[r][c].values);
             }
         }
