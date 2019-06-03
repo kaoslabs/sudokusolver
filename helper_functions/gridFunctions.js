@@ -53,7 +53,7 @@ function Grid(){
     this.getRowValues = function(row){
         let arr = [];
         for (let c = 0; c < 9; c++){
-            arr.push(cells[row][c].values);
+            arr.push(this.cells[row][c].values);
         }
         return arr;
     }
@@ -62,7 +62,7 @@ function Grid(){
     this.getColValues = function(col){
         let arr = [];
         for (let r = 0; r < 9; r++){
-            arr.push(cells[r][col].values);
+            arr.push(this.cells[r][col].values);
         }
         return arr;
     }
@@ -75,7 +75,7 @@ function Grid(){
         let arr = [];
         for (let r = row_box; r < row_box + 3; r++){
             for (let c = col_box; c < col_box + 3; c++){
-                arr.push(cells[r][c].values);
+                arr.push(this.cells[r][c].values);
             }
         }
         return arr;

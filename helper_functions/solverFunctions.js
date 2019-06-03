@@ -33,7 +33,7 @@ function Solver(){
                 cell.setCell(values);
                 continue;
             }
-            // only remove values from cell IF cell is still an array
+            // only remove values from cell IF cell is not solved
             if (!cell.solved){
                 cell.removeValues(values);
             }
@@ -52,7 +52,7 @@ function Solver(){
                 cell.setCell(values);
                 continue;
             }
-            // only remove values from cell IF cell is still an array
+            // only remove values from cell IF cell is not solved
             if (!cell.solved){
                 cell.removeValues(values);
             }
@@ -186,7 +186,7 @@ function Solver(){
             for (let c = 0; c < 9; c++){
                 // skip cell if not 2 values in cell
                 if (row_values[c].length != 2) continue;
-                // compare against future cells
+                // compare against future cells 
                 for (let c_2 = c + 1; c_2 < 9; c_2++){
                     if (compareArraysEqual(row_values[c], row_values[c_2])){
                         propogateRow(row, row_values[c], [c, c_2]);
